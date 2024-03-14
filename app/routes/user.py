@@ -79,7 +79,8 @@ class UserLogin(Resource):
 class UserLoginCallback(Resource):
     @api.doc("使用者登入Callback")
     def get(self):
-        print(GOOGLE_CLIENT_ID)
+        if "http:" in request.url:
+            request.url = request.url.replace("http:", "https:", 1)
         flow.fetch_token(authorization_response=request.url)
 
         if not session["state"] == request.args["state"]:
