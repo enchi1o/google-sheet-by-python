@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 
 from app.common.extentions import db, migrate, jwt
@@ -6,7 +7,7 @@ from app.routes import api
 
 
 def create_app(config_name):
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder="../templates")
     app.config.from_object(config[config_name])
 
     api.init_app(app)
