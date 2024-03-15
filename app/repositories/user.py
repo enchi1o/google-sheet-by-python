@@ -15,7 +15,7 @@ def respModel(user):
     }
 
 
-class User:
+class UserRepo:
     @staticmethod
     def db_register_insert(email, password_salt, password_hash, user_name):
         try:

@@ -5,14 +5,12 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path=".env")
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-DB_HOST = os.environ.get("DB_HOST")
+DB_HOST = os.getenv("DB_HOST")
 DB_USERNAME = os.getenv("DB_USERNAME")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_DATABASE = os.getenv("DB_DATABASE")
+DB_PORT = os.getenv("DB_PORT")
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
-DB_PORT = os.environ.get("DB_PORT")
-MAIL_USER = os.getenv("MAIL_USER")
-MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
 
 
 class BaseConfig:  # 基本配置

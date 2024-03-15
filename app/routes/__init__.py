@@ -17,6 +17,8 @@ api = Api(
     },
 )
 
-from .user import api as user_ns
+from .auth import api as user_ns
+from .project import api as project_ns
 
 api.add_namespace(user_ns, path="/user")
+api.add_namespace(project_ns, path="/project")

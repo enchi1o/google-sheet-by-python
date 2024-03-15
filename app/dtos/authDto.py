@@ -1,8 +1,8 @@
 from flask_restx import Namespace, fields
 
 
-class userDto:
-    api = Namespace("user", description="使用者登入相關")
+class authDto:
+    api = Namespace("auth", description="使用者登入相關")
 
     google_args = api.model(
         "GoogleArgs",
