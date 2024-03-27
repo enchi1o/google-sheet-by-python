@@ -12,7 +12,7 @@ api = ProjectDto.api
 
 @api.route("")
 class WorkflowProject(Resource):
-    @api.doc(description="新增專案")
+    @api.doc(description="新增專案", security="Bearer Auth")
     @api.expect(ProjectDto.project_post_args, validate=True)
     @api.response(
         code=200,
@@ -27,7 +27,7 @@ class WorkflowProject(Resource):
             description=api.payload["description"],
         )
 
-    @api.doc(description="查詢所有專案")
+    @api.doc(description="查詢所有專案", security="Bearer Auth")
     @api.response(
         code=200,
         description="查詢所有專案成功",
@@ -37,7 +37,7 @@ class WorkflowProject(Resource):
         # 查詢所有專案 Service
         return ProjectService.query_all()
 
-    @api.doc(description="更新專案")
+    @api.doc(description="更新專案", security="Bearer Auth")
     @api.expect(ProjectDto.project_update_args, validate=True)
     @admin_required
     def put(self):
@@ -48,7 +48,7 @@ class WorkflowProject(Resource):
             webhook_url=api.payload["webhook_url"],
         )
 
-    @api.doc(description="刪除專案")
+    @api.doc(description="刪除專案", security="Bearer Auth")
     @api.expect(ProjectDto.project_delete_args, validate=True)
     @admin_required
     def delete(self):

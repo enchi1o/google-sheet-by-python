@@ -5,7 +5,7 @@ from flask_jwt_extended import get_jwt_identity, verify_jwt_in_request
 from jwt.exceptions import DecodeError, ExpiredSignatureError, InvalidSignatureError
 from werkzeug.exceptions import HTTPException
 
-from app.repositories.user import User
+from app.repositories.user import UserRepo
 
 
 def get_user_system_permission():
@@ -18,7 +18,7 @@ def get_user_system_permission():
     try:
         verify_jwt_in_request()
         sub = get_jwt_identity()
-        info = User.db_query_by_email(email=sub)
+        info = UserRepo.db_query_by_email(email=sub)
 
         if not info["data"].active:
             abort(403, "該使用者 active 未開啟，請聯絡管理者開啟")
